@@ -19,6 +19,10 @@ function parseFile(string $filePath)
 
 function parseJson(string $filePath): array
 {
-    $decoded = json_decode(file_get_contents($filePath), true);
-    return $decoded;
+    $content = file_get_contents($filePath);
+    if ($content == false) {
+        throw new \Exception('Non-existent file path');
+    } else {
+        return json_decode($content, true);
+    }
 }
