@@ -19,7 +19,7 @@ function parseFile(string $filePath)
 
 function parseJson(string $filePath): array
 {
-    $content = file_get_contents($filePath);
-    $decoded = json_decode($content, 1);
+    $content = file_get_contents($filePath, 'fail');
+    $decoded = json_decode($content, true);
     return $decoded;
 }
