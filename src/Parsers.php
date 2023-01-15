@@ -20,9 +20,6 @@ function parseFile(string $filePath)
 function parseJson(string $filePath): array
 {
     $content = file_get_contents($filePath);
-    $decoded = json_decode($content, true);
-    if ($decoded === null) {
-        throw new \Exception("Cannot parse the file\n");
-    }
+    $decoded = json_decode($content, 1);
     return $decoded;
 }
