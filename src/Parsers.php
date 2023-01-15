@@ -4,7 +4,7 @@ namespace src\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parseFile(string $filePath): array
+function parseFile(string $filePath)
 {
     $format = pathinfo($filePath, PATHINFO_EXTENSION);
     switch ($format) {
@@ -15,5 +15,7 @@ function parseFile(string $filePath): array
             return Yaml::parseFile($filePath);
         case 'yaml':
             return Yaml::parseFile($filePath);
+        default:
+            throw new \Exception("Unknown extension: '{$format}'");
     }
 }
