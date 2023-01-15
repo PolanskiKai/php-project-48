@@ -15,7 +15,7 @@ function prepareValue(mixed $value, int $depth): string
         return $value == true ? 'true' : 'false';
     }
     if (is_null($value)) {
-        return $value = 'null';
+        return 'null';
     }
     if (!is_array($value)) {
         return "{$value}";

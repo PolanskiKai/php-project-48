@@ -6,8 +6,15 @@ use Symfony\Component\Yaml\Yaml;
 
 function parseFile(string $filePath): array
 {
-    pathinfo($filePath, PATHINFO_EXTENSION) == 'json' ? $result = parseJson($filePath) : $result = Yaml::parseFile($filePath);
-    return $result;
+    $format = pathinfo($filePath, PATHINFO_EXTENSION);
+    switch ($format) {
+        case 'json':
+            return parseJson($filePath);
+        case 'yml':
+            return Yaml::parseFile($filePath);
+        case 'yaml':
+            return Yaml::parseFile($filePath);
+    }
 }
 
 function parseJson(string $filePath): array
