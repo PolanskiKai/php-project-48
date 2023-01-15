@@ -10,12 +10,10 @@ function parseFile(string $filePath)
     switch ($format) {
         case 'json':
             $result = file_get_contents($filePath);
-            return json_decode($result, true);
+            return json_decode($result, true, 512);
         case 'yml':
             return Yaml::parseFile($filePath);
         case 'yaml':
             return Yaml::parseFile($filePath);
-        default:
-            throw new \Exception("Unknown extension: '{$format}'");
     }
 }
