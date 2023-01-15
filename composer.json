@@ -20,7 +20,6 @@
     "require": {
         "docopt/docopt": "^1.0",
         "lstrojny/functional-php": "^1.17",
-        "funct/funct": "^1.5",
         "symfony/yaml": "5.3"
     },
     "bin": [

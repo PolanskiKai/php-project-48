@@ -2,7 +2,7 @@
 
 namespace src\Formatters\Stylish;
 
-use function Funct\Collection\flattenAll;
+use function Functional\flatten;
 
 function makeIndent(int $depth): string
 {
@@ -15,11 +15,10 @@ function prepareValue($value, int $depth): string
         return $value == true ? 'true' : 'false';
     }
     if (is_null($value)) {
-        $value = 'null';
-        return $value;
+        return $value = 'null';
     }
     if (!is_array($value)) {
-        return $value;
+        return "{$value}";
     } else {
         $indent = makeIndent($depth);
 
@@ -68,5 +67,5 @@ function makeStylish(array $diff): string
             };
         }, $diff);
     };
-    return implode("\n", flattenAll(['{', $iter($diff, 1), '}']));
+    return implode("\n", flatten(['{', $iter($diff, 1), '}']));
 }

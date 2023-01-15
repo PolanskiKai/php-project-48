@@ -2,7 +2,7 @@
 
 namespace src\Formatters\Plain;
 
-use function Funct\Collection\flattenAll;
+use function Functional\flatten;
 
 function makePlain(array $diff): string
 {
@@ -37,7 +37,7 @@ function makePlain(array $diff): string
             }
         }, $diff);
     };
-    return implode("\n", flattenAll($iter($diff, [])));
+    return implode("\n", flatten($iter($diff, [])));
 }
 
 function prepareValue($value): string

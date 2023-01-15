@@ -3,7 +3,6 @@
 namespace src\Merger;
 
 use function Functional\sort;
-use function Funct\Collection\union;
 
 function makeNode(string $key, string $type, $oldValue, $newValue, $children = null): array
 {
@@ -20,7 +19,7 @@ function makeDiff(array $arr1, array $arr2): array
 {
     $keys1 = array_keys($arr1);
     $keys2 = array_keys($arr2);
-    $unionKeys = union($keys1, $keys2);
+    $unionKeys = array_unique(array_merge($keys1, $keys2));
     $sortedKeys = sort($unionKeys, fn ($key1, $key2) => $key1 <=> $key2);
 
     $callback = function ($key) use ($arr1, $arr2) {
