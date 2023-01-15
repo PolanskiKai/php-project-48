@@ -4,7 +4,7 @@ namespace src\Merger;
 
 use function Functional\sort;
 
-function makeNode(string $key, string $type, $oldValue, $newValue, $children = null): array
+function makeNode(string $key, string $type, mixed $oldValue, mixed $newValue, mixed $children = null): array
 {
     return [
         'key' => $key,
@@ -15,7 +15,7 @@ function makeNode(string $key, string $type, $oldValue, $newValue, $children = n
     ];
 }
 
-function makeDiff($arr1, $arr2): array
+function makeDiff(array $arr1, array $arr2): array
 {
     $keys1 = array_keys($arr1);
     $keys2 = array_keys($arr2);

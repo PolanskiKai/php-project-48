@@ -9,7 +9,7 @@ function makeIndent(int $depth): string
     return str_repeat(" ", 4 * $depth);
 }
 
-function prepareValue($value, int $depth): string
+function prepareValue(mixed $value, int $depth): string
 {
     if (is_bool($value)) {
         return $value == true ? 'true' : 'false';

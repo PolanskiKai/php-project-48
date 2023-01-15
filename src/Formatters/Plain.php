@@ -40,7 +40,7 @@ function makePlain(array $diff): string
     return implode("\n", flatten($iter($diff, [])));
 }
 
-function prepareValue($value): string
+function prepareValue(mixed $value): string
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';

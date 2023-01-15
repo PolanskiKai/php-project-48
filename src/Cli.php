@@ -4,7 +4,7 @@ namespace src\Cli;
 
 use Docopt;
 
-use function Differ\Differ\gendiff;
+use function Differ\Differ\genDiff;
 
 const DOC = <<<EOF
 Generate diff
@@ -25,5 +25,5 @@ function run(): string
     $pathToFile2 = $args['<secondFile>'];
     $format = $args['--format'];
 
-    return gendiff($pathToFile1, $pathToFile2, $format);
+    return genDiff($pathToFile1, $pathToFile2, $format);
 }
