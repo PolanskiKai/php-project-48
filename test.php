@@ -18,4 +18,4 @@ use function src\Formatters\Json\makeJson;
 $test1 = parseFile('tests/fixtures/file1.json');
 $test2 = parseFile('tests/fixtures/file2.json');
 
-print_r(makeJson(makeDiff($test1, $test2)));
+print_r(makeStylish(makeDiff($test1, $test2)));

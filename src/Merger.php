@@ -15,7 +15,7 @@ function makeNode(string $key, string $type, $oldValue, $newValue, $children = n
     ];
 }
 
-function makeDiff(array $arr1, array $arr2): array
+function makeDiff($arr1, $arr2): array
 {
     $keys1 = array_keys($arr1);
     $keys2 = array_keys($arr2);
@@ -31,13 +31,13 @@ function makeDiff(array $arr1, array $arr2): array
         if (!array_key_exists($key, $arr2)) {
             return makeNode($key, 'removed', $value1, null);
         }
-        if (is_array($value1) && is_array($value2)) {
-            return makeNode($key, 'complex', null, null, makeDiff($value1, $value2));
-        }
-        if ($value1 == $value2) {
+        if ($value1 === $value2) {
             return makeNode($key, 'unchanged', $value1, $value2);
         }
-        return makeNode($key, 'updated', $value1, $value2);
+        if (!is_array($value1) || !is_array($value2)) {
+            return makeNode($key, 'updated', $value1, $value2);
+        }
+        return makeNode($key, 'complex', null, null, makeDiff($value1, $value2));
     };
     return array_map($callback, $sortedKeys);
 }
