@@ -8,7 +8,7 @@ use function src\Formatters\Json\makeJson;
 
 function chooseFormat(string $format, array $arr)
 {
-    switch($format) {
+    switch ($format) {
         case 'stylish':
             return makeStylish($arr);
         case 'plain':

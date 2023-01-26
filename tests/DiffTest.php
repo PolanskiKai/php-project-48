@@ -21,7 +21,7 @@ class DiffTest extends TestCase
             ]
         ];
     }
-    
+
     /**
      * @dataProvider addDataProvider
      */
