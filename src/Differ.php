@@ -46,8 +46,20 @@ function makeDiff(array $arr1, array $arr2): array
 
 function genDiff(string $firstPath, string $secondPath, string $format = 'stylish')
 {
-    $firstArray = parseFile($firstPath);
-    $secondArray = parseFile($secondPath);
+    [$content1, $format1] = prepareContent($firstPath);
+    [$content2, $format2] = prepareContent($secondPath);
+    $firstArray = parseFile($content1, $format1);
+    $secondArray = parseFile($content2, $format2);
     $result = makeDiff($firstArray, $secondArray);
     return chooseFormat($format, $result);
+}
+
+function prepareContent(string $path): array
+{
+    if (!file_exists($path)) {
+        throw new \Exception("Non-existent file path");
+    }
+    $content = file_get_contents($path);
+    $format = pathinfo($path, PATHINFO_EXTENSION);
+    return [$content, $format];
 }
